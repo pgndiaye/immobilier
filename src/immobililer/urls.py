@@ -20,7 +20,7 @@ from immobililer.views import immobilier_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.LoginPage.as_view(), name='login'),
+    path('login/', views.LoginPage.as_view(), name="login"),
     path('logout/', views.authentication_logout, name='logout'),
     path('home/', immobilier_home, name='home'),
 ]
