@@ -1,0 +1,18 @@
+{% extends "authentication/base.html" %}
+{% block content %}
+
+<h1>Modifier vos information</h1>
+<form method="post">
+    {{ form_edit_info.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Modifier les informations">
+</form>
+
+<h1>Edit la photo de profile</h1>
+<form method="post">
+    {{ form_edit_photo }}
+    {% csrf_token %}
+    <input type="submit" value="Modifier la photo de profile">
+</form>
+
+{% endblock %}

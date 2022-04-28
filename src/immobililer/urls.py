@@ -23,4 +23,5 @@ urlpatterns = [
     path('login/', views.LoginPage.as_view(), name='login'),
     path('logout/', views.authentication_logout, name='logout'),
     path('home/', immobilier_home, name='home'),
+    path('user/update/', views.EditInfo.as_view(), name='update_profile'),
 ]
