@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from authentication import views 
+from django.conf import settings
+from django.conf.urls.static import static
 from immobililer.views import immobilier_home
 
 urlpatterns = [
@@ -24,4 +26,9 @@ urlpatterns = [
     path('singup/', views.SingupPage.as_view(), name="singup"),
     path('logout/', views.authentication_logout, name='logout'),
     path('home/', immobilier_home, name='home'),
+    path('user/update/', views.EditInfo.as_view(), name='update_profile'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

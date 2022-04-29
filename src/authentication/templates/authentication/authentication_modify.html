@@ -1,0 +1,17 @@
+{% extends "authentication/base.html" %}
+{% block content %}
+
+<h1>Modifier vos information</h1>
+<form method="post" enctype="multipart/form-data">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Metre a mes information">
+</form>
+
+<h1>Edit la photo de profile</h1>
+
+<div>
+    <img src="{{ user.profile_photo.url }}" alt="" style="width: 100px; height: 100px;">
+</div>
+
+{% endblock %}
