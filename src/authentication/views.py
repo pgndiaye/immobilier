@@ -26,7 +26,7 @@ class LoginPage(View):
                 return redirect("home")    
         return render(request, self.template_name, context={"form":form})
     
-# Cette class va permetre de gérer la crféation de compte d'un utilisateur
+# Cette class va permetre de gérer la création de compte d'un utilisateur
 class SingupPage(View):
     class_form = forms.SingupForm
     template_name = "authentication/authentication_singup.html"
