@@ -35,7 +35,9 @@ class SingupPage(View):
 
     def get(self, request):
         form = self.class_form()
-        return render(request, self.template_name, context={"form": form})
+        user = models.User.objects.get(username=request.user)
+        print(user)
+        return render(request, self.template_name, context={"form": form, "user": user})
     
     def post(self, request):    
         form = self.class_form(request.POST)
@@ -54,12 +56,12 @@ class EditInfo(View):
     class_model = EditInfoForm
     
     def get(self, request):
-        user = models.User.objects.get(username=request.user)
-        form = self.class_model(instance=user)
-        return render(request, self.template_name, context={"form": form, "user": user})
+        form = self.class_model(instance=request.user)
+        return render(request, self.template_name, context={"form": form})
        
     def post(self, request):
         user = models.User.objects.get(username=request.user)
+        print(user.photo_profile)
         form = self.class_model(request.POST, request.FILES, instance=user)
 
         if form.is_valid():
