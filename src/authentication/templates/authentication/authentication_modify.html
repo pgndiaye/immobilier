@@ -15,7 +15,7 @@
     {% if user.photo_profile %}
         <img src="{{ user.photo_profile.url }}" alt="" style="width: 100px; height: 100px;">
     {% else %}
-        <img src="{ static 'authentication/img/anonymous.jpg'}" alt="" style="width: 100px; height: 100px;">
+        <img src="{% static 'authentication/img/anonymous.jpg' %}" alt="" style="width: 100px; height: 100px;">
     {% endif %}
 </div>
 

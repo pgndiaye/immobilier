@@ -35,9 +35,7 @@ class SingupPage(View):
 
     def get(self, request):
         form = self.class_form()
-        user = models.User.objects.get(username=request.user)
-        print(user)
-        return render(request, self.template_name, context={"form": form, "user": user})
+        return render(request, self.template_name, context={"form": form})
     
     def post(self, request):    
         form = self.class_form(request.POST)
@@ -47,9 +45,6 @@ class SingupPage(View):
             login(request, user)
             return redirect("home")
         return render(request, self.template_name, context={"form": form})
-
-            
-        
 
 class EditInfo(View):
     template_name = "authentication/authentication_modify.html"
@@ -61,7 +56,6 @@ class EditInfo(View):
        
     def post(self, request):
         user = models.User.objects.get(username=request.user)
-        print(user.photo_profile)
         form = self.class_model(request.POST, request.FILES, instance=user)
 
         if form.is_valid():
@@ -69,6 +63,8 @@ class EditInfo(View):
             photo.uploader = request.user
             photo.save()
             return redirect("update_profile")
+
+
 
 def authentication_logout(request):  
     logout(request)
