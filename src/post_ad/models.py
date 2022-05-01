@@ -16,8 +16,14 @@ class House(models.Model):
         return self.house  
     
 class PostAd(models.Model):
+    type_renting_or_purchasing = [
+        ("Location", "Renting"),
+        ("Vente", "Purchasing"),
+    ]
+    
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     house = models.ForeignKey(House, on_delete=models.CASCADE)
+    estate_type = models.CharField(max_length=25, choices=type_renting_or_purchasing)
     
     title_ad = models.CharField(max_length=30)
     description_ad = models.TextField(max_length=1000)

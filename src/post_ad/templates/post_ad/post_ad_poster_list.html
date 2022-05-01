@@ -1,0 +1,15 @@
+{% extends "authentication/base.html" %}
+{% block title_documents %} Liste de toute les annonce {% endblock %}
+
+{% block content%}
+
+    <h1>Liste de toute les annonce</h1>
+    {% if post_ad %}
+        {% for item in post_ad %}
+            <div> <a href="{% url 'poster_detailed' item.id %}">{{ item }}</a></div>
+            <div> <img src="{{item.photo_ad.url}}" style="width: 100px; height: 100px;" alt=""></div>
+        {% endfor %}
+    {% else %}
+        <p>Aucune annonce disponible</p>
+    {% endif%}
+{% endblock %}

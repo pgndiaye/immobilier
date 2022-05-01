@@ -1,0 +1,10 @@
+{% extends "authentication/base.html" %}
+{% block title_document %} Détaile du produit {{ post_ad.title_ad }} {% endblock %}
+{% block content %}
+
+    <h1>{{post_ad.title_ad}}</h1>
+    <p><img src="{{ post_ad.photo_ad.url }}" alt=""></p>
+    <p>{{post_ad.description_ad}}</p>
+    <p>{{post_ad.price_ad}} XOF</p>
+
+{% endblock %}

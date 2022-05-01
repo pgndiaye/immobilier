@@ -6,7 +6,7 @@
     {% endfor %}
     <h1>Crée une nouvelle annonce</h1>
 
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Poster l'annonce">
