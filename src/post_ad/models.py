@@ -24,8 +24,7 @@ class PostAd(models.Model):
     price_ad = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1_000_000_000)])
     photo_ad = models.ImageField()
     
-    date_create_ad = models.DateTimeField(auto_now=timezone.now(), blank=True, verbose_name="Date création")
-    date_modified_ad = models.DateTimeField(auto_now=True)    
+    date_create_ad = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
