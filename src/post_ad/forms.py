@@ -4,7 +4,10 @@ from .models import PostAd
 class FormPostAd(forms.ModelForm):
     class Meta:
         model = PostAd
-        exclude  = ["date_create_ad", "date_modified_ad"]
+        exclude  = [
+            "date_create_ad", 
+            "date_modified_ad",
+        ]
         labels = {
             "city": "Ville",
             "house": "Type de bien",
@@ -14,3 +17,6 @@ class FormPostAd(forms.ModelForm):
             "photo_ad": "Ajouter une photo",
         }
         
+        widgets = {
+            "user": forms.HiddenInput
+        }

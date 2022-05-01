@@ -25,7 +25,7 @@ class PostAd(models.Model):
     photo_ad = models.ImageField()
     
     date_create_ad = models.DateTimeField(default=timezone.now)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.CharField(max_length=150)
 
     def __str__(self):
         return self.title_ad  

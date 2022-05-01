@@ -11,8 +11,17 @@ class PostAdFormPage(View):
         return render(request, self.template_name, context={"form": form})
     
     def post(self, request):
-        form = self.class_form(request.POST, request.FILES)
+        data = {
+            "city": request.POST.get("city"),
+            "house": request.POST.get("house"),
+            "title_ad": request.POST.get("title_ad"),
+            "description_ad": request.POST.get("description_ad"),
+            "user": request.user,
+            "price_ad": request.POST.get("price_ad"),
+        }
+        form = self.class_form(data, request.FILES)        
         
+
         if form.is_valid():
             photo = form.save(commit=False)
             photo.uploader = request.user
