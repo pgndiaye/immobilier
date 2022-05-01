@@ -3,8 +3,10 @@
 {% block content %}
 
     <h1>{{post_ad.title_ad}}</h1>
-    <p><img src="{{ post_ad.photo_ad.url }}" alt=""></p>
+    <p><img src="{{ post_ad.photo_ad.url }}" style="width: 200px; height: 200px;"></p>
     <p>{{post_ad.description_ad}}</p>
     <p>{{post_ad.price_ad}} XOF</p>
-
+    <p>{{post_ad.id}}</p>
+    <p><a href="{% url 'poster_update' post_ad.id %}">Modifier l'annonce</a></p>
+     
 {% endblock %}

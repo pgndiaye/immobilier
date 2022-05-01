@@ -1,0 +1,16 @@
+{% extends "authentication/base.html" %}
+{% block title_document %} Modification de {{ post_ad.title_ad }} {% endblock %}
+{% block content %}
+
+    {% for error in form.non_field_errors %}
+        {{error}}
+    {% endfor %}
+
+    <h1>Modifier l'annonce</h1>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Modifier l'annonce">
+    </form>
+    <a href="{% url 'poster_delete' number_ad %} "><button>supprimer l'annonce</button></a>
+{% endblock %}

@@ -30,10 +30,46 @@ class PostAdFormPage(View):
             return redirect("home")
         return render(request, self.template_name, context={"form": form})
 
+class PostAdUpdate(View):
+    template_name = "post_ad/post_ad_modified.html"
+    class_model = FormPostAd
+    
+    def get(self, request, number_ad):
+        data_post_ad = PostAd.objects.get(id=number_ad)
+        form = self.class_model(instance=data_post_ad)
+        return render(request, self.template_name, context={"form": form, "number_ad": number_ad})
+    
+    def post(self, request, number_ad):
+        data_post_ad = PostAd.objects.get(id=number_ad)
+        form = self.class_model(request.POST, request.FILES, instance=data_post_ad)
+
+        if form.is_valid():
+            form.save(commit=False)
+            form.uploder = request.user
+            form.save()
+            return redirect("poster_list") 
+        return render(request, self.template_name, context={"form": form})
+    
+
+
+class PostAdDelete(View):
+    template_name = "post_ad/post_ad_delete.html"
+    class_model = PostAd
+    
+    def get(self, request, number_ad):
+        post_ad = self.class_model.objects.get(id=number_ad)
+        return render(request, self.template_name, context={"post_ad": post_ad})
+    
+    def post(self, request, number_ad):
+        post_ad = self.class_model.objects.get(id=number_ad)
+        post_ad.delete()
+        return redirect("poster_list")
+
 
 def post_ad_post_list(request):
     post_ad = PostAd.objects.all()
     return render(request, "post_ad/post_ad_poster_list.html", context={"post_ad": post_ad})
+
 
 def post_ad_post_detailed(request, number_ad):
     post_ad = PostAd.objects.get(id=number_ad)
