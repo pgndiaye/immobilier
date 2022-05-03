@@ -7,13 +7,19 @@ class City(models.Model):
     city = models.CharField(max_length=20)  
     
     def __str__(self):
-        return self.city  
+        return self.city   
 
 class House(models.Model):
     house = models.CharField(max_length=20)
     
     def __str__(self):
-        return self.house  
+        return self.house 
+    
+class District(models.Model):
+    district = models.CharField(max_length=20, null=False)  
+
+    def __str__(self):
+        return self.district  
     
 class PostAd(models.Model):
     type_renting_or_purchasing = [
@@ -22,6 +28,7 @@ class PostAd(models.Model):
     ]
     
     city = models.ForeignKey(City, on_delete=models.CASCADE)
+    district = models.ForeignKey(District, on_delete=models.CASCADE)
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     estate_type = models.CharField(max_length=25, choices=type_renting_or_purchasing)
     
@@ -32,7 +39,7 @@ class PostAd(models.Model):
     
     date_create_ad = models.DateTimeField(default=timezone.now)
     user = models.CharField(max_length=150)
-    user_id_ad = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1_000_000_000)])
 
     def __str__(self):
         return self.title_ad  
+    

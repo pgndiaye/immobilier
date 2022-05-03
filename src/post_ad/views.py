@@ -22,6 +22,7 @@ class PostAdFormPage(View):
             "price_ad": request.POST.get("price_ad"),
             "user_id_ad": request.user.id,
             "estate_type": request.POST.get("estate_type"),
+            "district": request.POST.get("district"),
         }
         form = self.class_form(data, request.FILES)        
 
