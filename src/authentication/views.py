@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.views.generic import View
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from .forms import EditInfoForm, LoginForm, SingupForm
 from . import models
 
@@ -51,7 +52,10 @@ class SingupPage(View):
         messages.add_message(request, messages.INFO, "Veuillez vérifier les informations que vous avez entrer")
         return render(request, self.template_name, context={"form": form})
 
-class EditInfo(View):
+class EditInfo(LoginRequiredMixin, View):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    
     template_name = "authentication/authentication_modify.html"
     class_model = EditInfoForm
     
@@ -73,7 +77,10 @@ class EditInfo(View):
         messages.add_message(request, messages.INFO, "Une erreur c'est produite lors de la modifications de vos information")
         return render(request, self.template_name, context={"form": form})
 
-class DeleteAccount(View):
+class DeleteAccount(LoginRequiredMixin, View):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    
     template_name = "authentication/authentiction_detele_account.html"
     model_class = models.User
     
@@ -87,6 +94,7 @@ class DeleteAccount(View):
         return redirect("poster_list")
         
 
+@login_required
 def authentication_logout(request):  
     logout(request)
     messages.add_message(request, messages.SUCCESS, "Vous venez de vous déconnecter")

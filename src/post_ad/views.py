@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from .forms import FormPostAd, FormSearchProperty, FormSearchProperty
 from .models import PostAd, SearchProperty
 
-class PostAdFormPage(View):
+class PostAdFormPage(LoginRequiredMixin, View):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    
     template_name = "post_ad/post_ad_post.html"
     class_form = FormPostAd
     
@@ -37,7 +42,10 @@ class PostAdFormPage(View):
         messages.add_message(request, messages.INFO, "Veuillez vérifier les informations que vous avez entrer")
         return render(request, self.template_name, context={"form": form})
 
-class PostAdUpdate(View):
+class PostAdUpdate(LoginRequiredMixin, View):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    
     template_name = "post_ad/post_ad_modified.html"
     class_model = FormPostAd
     
@@ -60,7 +68,10 @@ class PostAdUpdate(View):
         messages.add_message(request, messages.INFO, "Une Erreur c'est produite lors de la modification de l'annonce")
         return render(request, self.template_name, context={"form": form})
 
-class PostAdDelete(View):
+class PostAdDelete(LoginRequiredMixin, View):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    
     template_name = "post_ad/post_ad_delete.html"
     class_model = PostAd
     
@@ -125,6 +136,7 @@ def post_ad_post_detailed(request, number_ad):
     return render(request, "post_ad/post_ad_detailed.html", context={"post_ad": post_ad})
 
 
+@login_required
 def post_ad_post_ad_user(request):
     user_id = request.user.id
     post_ads = PostAd.objects.filter(user=request.user)
