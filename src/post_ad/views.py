@@ -22,7 +22,6 @@ class PostAdFormPage(View):
             "user_id_ad": request.user.id,
             "estate_type": request.POST.get("estate_type"),
         }
-        print(request.user.id)
         form = self.class_form(data, request.FILES)        
         
 
@@ -52,8 +51,6 @@ class PostAdUpdate(View):
             form.save()
             return redirect("poster_list") 
         return render(request, self.template_name, context={"form": form})
-    
-
 
 class PostAdDelete(View):
     template_name = "post_ad/post_ad_delete.html"
@@ -77,3 +74,8 @@ def post_ad_post_list(request):
 def post_ad_post_detailed(request, number_ad):
     post_ad = PostAd.objects.get(id=number_ad)
     return render(request, "post_ad/post_ad_detailed.html", context={"post_ad": post_ad})
+
+def post_ad_post_ad_user(request):
+    user_id = request.user.id
+    post_ads = PostAd.objects.filter(user=request.user)
+    return render(request, "post_ad/post_ad_display_ad_user.html", context={"post_ads": post_ads})
