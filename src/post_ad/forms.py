@@ -15,8 +15,10 @@ class FormPostAd(forms.ModelForm):
             "description_ad": "Descrption de l'annonce",
             "price_ad": "Prix",
             "photo_ad": "Ajouter une photo",
+            "estate_type": "Type de vente",
         }
         
         widgets = {
-            "user": forms.HiddenInput
+            "user": forms.HiddenInput,
+            "user_id_ad": forms.HiddenInput,
         }

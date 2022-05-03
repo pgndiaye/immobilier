@@ -17,8 +17,8 @@ class House(models.Model):
     
 class PostAd(models.Model):
     type_renting_or_purchasing = [
-        ("Location", "Renting"),
-        ("Vente", "Purchasing"),
+        ("Renting", "Location"),
+        ("Purchasing", "Vente"),
     ]
     
     city = models.ForeignKey(City, on_delete=models.CASCADE)
@@ -32,6 +32,7 @@ class PostAd(models.Model):
     
     date_create_ad = models.DateTimeField(default=timezone.now)
     user = models.CharField(max_length=150)
+    user_id_ad = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1_000_000_000)])
 
     def __str__(self):
         return self.title_ad  
