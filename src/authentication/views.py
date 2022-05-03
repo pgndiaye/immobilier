@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import EditInfoForm, LoginForm, SingupForm
 from . import models
 
-# Cette class va permetre de gérer l'authentification d'un utilisateur
 class LoginPage(View):
     template_name = "authentication/authentication_login.html"
     form_class = LoginForm
@@ -28,7 +27,6 @@ class LoginPage(View):
                 return redirect("home")   
         return render(request, self.template_name, context={"form":form})
     
-# Cette class va permetre de gérer la création de compte d'un utilisateur
 class SingupPage(View):
     class_form = SingupForm
     template_name = "authentication/authentication_singup.html"
@@ -64,15 +62,24 @@ class EditInfo(View):
             photo.save()
             return redirect("update_profile")
 
-
+class DeleteAccount(View):
+    template_name = "authentication/authentiction_detele_account.html"
+    model_class = models.User
+    
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    def post(self, request):
+        user_delete = self.model_class.objects.get(username=request.user)
+        user_delete.delete()
+        return redirect("poster_list")
+        
 
 def authentication_logout(request):  
     logout(request)
     return redirect("home")
         
 
-        
-        
         
         
         

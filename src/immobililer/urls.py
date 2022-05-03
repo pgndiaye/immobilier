@@ -27,6 +27,7 @@ urlpatterns = [
     path('login/', views.LoginPage.as_view(), name="login"),
     path('singup/', views.SingupPage.as_view(), name="singup"),
     path('logout/', views.authentication_logout, name='logout'),
+    path('delete/', views.DeleteAccount.as_view(), name='delete_user'),
     
     path('user/update/', views.EditInfo.as_view(), name='update_profile'),
     
