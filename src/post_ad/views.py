@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django.contrib import messages
 from .forms import FormPostAd
 from .models import PostAd
 
@@ -23,13 +24,15 @@ class PostAdFormPage(View):
             "estate_type": request.POST.get("estate_type"),
         }
         form = self.class_form(data, request.FILES)        
-        
 
         if form.is_valid():
             photo = form.save(commit=False)
             photo.uploader = request.user
             photo.save()
-            return redirect("home")
+            messages.add_message(request, messages.SUCCESS, "Félication vous venez de publier une annonce")
+            return redirect("poster_list")
+        
+        messages.add_message(request, messages.INFO, "Veuillez vérifier les informations que vous avez entrer")
         return render(request, self.template_name, context={"form": form})
 
 class PostAdUpdate(View):
@@ -49,7 +52,10 @@ class PostAdUpdate(View):
             form.save(commit=False)
             form.uploder = request.user
             form.save()
+            messages.add_message(request, messages.SUCCESS, "Vous venez de modifier vôtre annonce")
             return redirect("poster_list") 
+        
+        messages.add_message(request, messages.INFO, "Une Erreur c'est produite lors de la modification de l'annonce")
         return render(request, self.template_name, context={"form": form})
 
 class PostAdDelete(View):
@@ -63,6 +69,7 @@ class PostAdDelete(View):
     def post(self, request, number_ad):
         post_ad = self.class_model.objects.get(id=number_ad)
         post_ad.delete()
+        messages.add_message(request, messages.INFO, "L'annonce a été supprimer")
         return redirect("poster_list")
 
 
@@ -74,6 +81,7 @@ def post_ad_post_list(request):
 def post_ad_post_detailed(request, number_ad):
     post_ad = PostAd.objects.get(id=number_ad)
     return render(request, "post_ad/post_ad_detailed.html", context={"post_ad": post_ad})
+
 
 def post_ad_post_ad_user(request):
     user_id = request.user.id

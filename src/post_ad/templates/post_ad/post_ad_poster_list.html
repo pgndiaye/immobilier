@@ -3,6 +3,12 @@
 
 {% block content%}
 
+    {% if messages %}
+        {% for message in messages %}
+            <h1>{{ message }}</h1>
+        {% endfor %}
+    {% endif %}
+    
     <h1>Liste de toute les annonce</h1>
     {% if post_ad %}
         {% for item in post_ad %}

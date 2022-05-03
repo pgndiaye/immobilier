@@ -7,10 +7,18 @@
     <title>Page de d'incription</title>
 </head>
 <body>
-    <h2>Inscription</h2>
-    {% if form.errors %}
-        {{ form.errors }}
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
     {% endif %}
+    
+    {% for error in form.non_field_errors %}
+        {{error}}
+    {% endfor %}
+ 
+    <h2>Inscription</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

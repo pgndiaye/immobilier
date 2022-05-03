@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import EditInfoForm, LoginForm, SingupForm
 from . import models
 
@@ -24,7 +25,10 @@ class LoginPage(View):
         
             if user != None:
                 login(request, user)
-                return redirect("home")   
+                messages.add_message(request, messages.SUCCESS, "Vous être connecté")
+                return redirect("poster_list")   
+        
+        messages.add_message(request, messages.SUCCESS, "Veuillez vérifier les informations que vous avez entrer")
         return render(request, self.template_name, context={"form":form})
     
 class SingupPage(View):
@@ -41,7 +45,10 @@ class SingupPage(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("home")
+            messages.add_message(request, messages.SUCCESS, "Vous être connecté")
+            return redirect("poster_list")
+        
+        messages.add_message(request, messages.INFO, "Veuillez vérifier les informations que vous avez entrer")
         return render(request, self.template_name, context={"form": form})
 
 class EditInfo(View):
@@ -60,7 +67,11 @@ class EditInfo(View):
             photo = form.save(commit=False)
             photo.uploader = request.user
             photo.save()
+            messages.add_message(request, messages.SUCCESS, "Vos informations on été mise ajour avec succès")
             return redirect("update_profile")
+        
+        messages.add_message(request, messages.INFO, "Une erreur c'est produite lors de la modifications de vos information")
+        return render(request, self.template_name, context={"form": form})
 
 class DeleteAccount(View):
     template_name = "authentication/authentiction_detele_account.html"
@@ -72,12 +83,14 @@ class DeleteAccount(View):
     def post(self, request):
         user_delete = self.model_class.objects.get(username=request.user)
         user_delete.delete()
+        messages.add_message(request, messages.SUCCESS, "Vôtre compte a été supprimer avec succès")
         return redirect("poster_list")
         
 
 def authentication_logout(request):  
     logout(request)
-    return redirect("home")
+    messages.add_message(request, messages.SUCCESS, "Vous venez de vous déconnecter")
+    return redirect("poster_list")
         
 
         
