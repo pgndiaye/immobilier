@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostAdFormPage, post_ad_post_list, post_ad_post_detailed, PostAdUpdate, PostAdDelete, post_ad_post_ad_user
+from .views import PostAdFormPage, post_ad_post_list, post_ad_post_detailed, PostAdUpdate, PostAdDelete, post_ad_post_ad_user, PostSearchProperty
 
 urlpatterns = [
     path("add/", PostAdFormPage.as_view(), name="poster_add"),
@@ -8,4 +8,5 @@ urlpatterns = [
     path("list/<int:number_ad>/detailed/", post_ad_post_detailed, name="poster_detailed"),
     path("list/<int:number_ad>/update/", PostAdUpdate.as_view(), name="poster_update"),
     path("list/<int:number_ad>/delete/", PostAdDelete.as_view(), name="poster_delete"),
+    path("list/search/", PostSearchProperty.as_view(), name="poster_search"),
 ]

@@ -36,10 +36,22 @@ class PostAd(models.Model):
     description_ad = models.TextField(max_length=1000)
     price_ad = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1_000_000_000)])
     photo_ad = models.ImageField()
+    number_of_piece = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1_000_000_000)])
     
     date_create_ad = models.DateTimeField(default=timezone.now)
     user = models.CharField(max_length=150)
 
     def __str__(self):
         return self.title_ad  
-    
+
+class SearchProperty(models.Model):
+    type_renting_or_purchasing = [
+        ("Renting", "Location"),
+        ("Purchasing", "Vente"),
+    ]
+        
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    district = models.ForeignKey(District, on_delete=models.CASCADE)
+    property_type = models.ForeignKey(House, on_delete=models.CASCADE)
+    estate_type = models.CharField(max_length=25, choices=type_renting_or_purchasing)
+    number_of_piece = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1_000_000_000)])

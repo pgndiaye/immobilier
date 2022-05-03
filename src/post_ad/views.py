@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib import messages
-from .forms import FormPostAd
-from .models import PostAd
+from django.db.models import Q
+from .forms import FormPostAd, FormSearchProperty, FormSearchProperty
+from .models import PostAd, SearchProperty
 
 class PostAdFormPage(View):
     template_name = "post_ad/post_ad_post.html"
@@ -73,10 +74,50 @@ class PostAdDelete(View):
         messages.add_message(request, messages.INFO, "L'annonce a été supprimer")
         return redirect("poster_list")
 
+class PostSearchProperty(View):
+    template_name = "post_ad/post_ad_post_search.html"
+    class_model = FormSearchProperty
+
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    def post(self, request):
+        form = self.class_model(request.POST)
+        
+        if form.is_valid():
+            search = {
+                "city": request.POST.get("city"),
+                "district": request.POST.get("district"),
+                "property_type": request.POST.get("property_type"),
+                "estate_type": request.POST.get("estate_type"),
+                "number_of_piece": request.POST.get("number_of_piece"),
+            }            
+
+            search_main = PostAd.objects.filter(
+                city=search["city"], 
+                district=search["district"],
+                house=search["property_type"], 
+                estate_type=search["estate_type"],
+                number_of_piece=search["number_of_piece"]
+            )
+            try:
+                search_main = PostAd.objects.filter(
+                    city=search["city"], 
+                    district=search["district"],
+                    house=search["property_type"], 
+                    estate_type=search["estate_type"],
+                    number_of_piece=search["number_of_piece"]
+                )
+            except ValueError:
+                return render(request, self.template_name, context={"search_main": search_main})
+  
+                
+            return render(request, self.template_name, context={"search_main": search_main})
 
 def post_ad_post_list(request):
     post_ad = PostAd.objects.all()
-    return render(request, "post_ad/post_ad_poster_list.html", context={"post_ad": post_ad})
+    form_search = FormSearchProperty
+    return render(request, "post_ad/post_ad_poster_list.html", context={"post_ad": post_ad, "form_search": form_search})
 
 
 def post_ad_post_detailed(request, number_ad):

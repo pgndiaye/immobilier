@@ -1,5 +1,5 @@
 from django import forms
-from .models import PostAd
+from .models import PostAd, SearchProperty
 
 class FormPostAd(forms.ModelForm):
     class Meta:
@@ -22,3 +22,15 @@ class FormPostAd(forms.ModelForm):
             "user": forms.HiddenInput,
             "user_id_ad": forms.HiddenInput,
         }
+        
+class FormSearchProperty(forms.ModelForm):
+    class Meta:
+        model = SearchProperty
+        fields = "__all__"
+        labels = {
+            "city": "Ville",
+            "district": "Quartier",
+            "district": "Quartier",
+            "number_of_piece": "Nombr de piéce",
+        }
+        

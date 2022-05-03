@@ -8,6 +8,12 @@
             <h1>{{ message }}</h1>
         {% endfor %}
     {% endif %}
+
+    <form action="{% url 'poster_search' %}" method="post">
+        {% csrf_token %}
+        {{ form_search }}
+        <input type="submit" value="Rechercher">
+    </form>
     
     <h1>Liste de toute les annonce</h1>
     {% if post_ad %}
@@ -18,4 +24,5 @@
     {% else %}
         <p>Aucune annonce disponible</p>
     {% endif%}
+
 {% endblock %}
