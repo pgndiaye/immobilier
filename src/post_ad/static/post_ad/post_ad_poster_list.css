@@ -1,0 +1,24 @@
+#block_search {
+    width: 97%;
+    border-radius: 5px;
+    height: 50px;
+    color: white;
+    background-color: #2eca6a;
+    position: relative;
+}
+
+#block_search form {
+    top: 15px;
+    left: 70px;
+    position: absolute;
+    border: 0;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#block_search form input, #id_estate_type, #id_city, #id_district, #id_property_type {
+    border: 0;
+    border-radius: 5px;
+    height: 20px;
+}
+

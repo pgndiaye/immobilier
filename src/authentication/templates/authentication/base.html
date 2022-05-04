@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title_document %} Liste des annonces {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'authentication/authentication_base.css' %}">
+    {% block style %} {% endblock %}
 </head>
 <body>
     <header>
@@ -40,8 +41,7 @@
 
     </main>
     <footer id="footer">
-        <p>Ceci est le pied de page</p>
+        <p class="Copyright">Copyright 2022 © Popo immobilié</p>
     </footer>
-    
 </body> 
 </html>

@@ -31,6 +31,7 @@ class FormSearchProperty(forms.ModelForm):
             "city": "Ville",
             "district": "Quartier",
             "district": "Quartier",
-            "number_of_piece": "Nombr de piéce",
+            "number_of_piece": "Nombre de piéce",
+            "estate_type": "Type de bien",
         }
         
