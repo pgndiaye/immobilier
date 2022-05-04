@@ -1,16 +1,47 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title_document %} {% endblock %}</title>
+    <title>{% block title_document %} Liste des annonces {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'authentication/authentication_base.css' %}">
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <header>
+        <nav id="nav_main">
+            <section id="block_nav">
+                <div class="nav_bar">
+                    <div id="nav_left">
+                        <a href="{% url 'index' %}" class="logo"> <span class="logo_1">Popo</span>  <span class="logo_2">immobilié</span> </a>
+                        <div class="rigth">
+                            {% if user.is_authenticated %}
 
-    {% if user.is_authenticated %}
-        <p>Vous être connecté en tan que {{ request.user }}. <a href="{% url 'logout' %}">Cliquer ici pour vous deconnecter</a></p>
-    {% endif %}
+                            <p>Vous être connecté en tan que {{ request.user }}. <a href="{% url 'logout' %}">Cliquer ici pour vous deconnecter</a></p>
+                            {% else %}
+                            <a href="{% url 'login' %}" class="singup">S'incrire</a> -
+                            <a href="{% url 'singup' %}" class="login">Se connecter</a>
+
+                            <a href=""><button class="bnt_new_ad">Poster une annonce</button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+        
+                </div>
+            </section>
+        </nav>
+    </header>
+    
+    <main id="block_main">
+
+        {% block content %}{% endblock %}
+
+    </main>
+    <footer id="footer">
+        <p>Ceci est le pied de page</p>
+    </footer>
+    
 </body> 
 </html>
