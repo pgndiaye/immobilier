@@ -1,0 +1,89 @@
+#block_search {
+    width: 97%;
+    border-radius: 5px;
+    height: 50px;
+    color: white;
+    background-color: #2eca6a;
+    position: relative;
+}
+
+#block_search form {
+    top: 15px;
+    left: 91px;
+    position: absolute;
+    border: 0;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#block_search form input, #id_estate_type, #id_city, #id_district, #id_property_type {
+    border: 0;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.bnt_loupe_search {
+    margin-left: 14px;
+    margin-bottom: -6px;
+}
+
+.title_1 {
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ceci est style des annonces */
+ #block_detailed_ad {
+    display: flex;
+    border: 2px solid #2eca6a;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    width: 50%;
+    height: 150px;
+    color: #000000;
+}
+
+.detaile_ad {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.detaile_ad div{
+    display: flex;
+}
+
+.div_image_ad {
+    width: 50%;
+    height: 100%;
+    min-width: 50%;
+}
+
+img {
+    height: 100%;
+    object-fit: scale-down;
+}
+
+#lien_ad {
+    color: #000000;
+    font-size: 24px;
+    font-weight: 300;
+    margin-left: -19px;
+    width: 180px;
+    overflow-wrap: break-word;
+}
+
+#lien_ad:hover {
+    text-decoration: underline;
+}
+
+.infos_price {
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 22px;
+}
+
+
+.infos_geolocalisation, .infos_time {
+    margin-left: -17px;
+    font-size: 17px;
+}

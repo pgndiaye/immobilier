@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title_document %} Liste des annonces {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'authentication/authentication_base.css' %}">
+    <title>{% block title_document %} Toute les annonces {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'authentication/css/authentication_base.css' %}">
     {% block style %} {% endblock %}
 </head>
 <body>
@@ -16,7 +16,7 @@
             <section id="block_nav">
                 <div class="nav_bar">
                     <div id="nav_left">
-                        <a href="{% url 'index' %}" class="logo"> <span class="logo_1">Popo</span>  <span class="logo_2">immobilié</span> </a>
+                        <a href="{% url 'index' %}" class="logo"> <span class="logo_1">Popo</span>  <span class="logo_2">immobilier</span> </a>
                         <div class="rigth">
                             {% if user.is_authenticated %}
 
@@ -41,7 +41,7 @@
 
     </main>
     <footer id="footer">
-        <p class="Copyright">Copyright 2022 © Popo immobilié</p>
+        <p class="Copyright">Copyright 2022 © Popo immobilier</p>
     </footer>
 </body> 
 </html>

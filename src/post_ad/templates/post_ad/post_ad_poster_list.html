@@ -2,7 +2,7 @@
 {% load static %}
 {% block title_documents %} Liste de toute les annonce {% endblock %}
 {% block style %} 
-    <link rel="stylesheet" href="{% static 'post_ad/post_ad_poster_list.css' %}">
+    <link rel="stylesheet" href="{% static 'post_ad/css/post_ad_poster_list.css' %}">
 {% endblock %}
 
 {% block content%}
@@ -17,22 +17,26 @@
         <form action="{% url 'poster_search' %}" method="post">
             {% csrf_token %}
             {{ form_search }}
-            <input type="submit" value="Rechercher" class="bnt_submit_search">
+            <input type="image" src="{% static 'post_ad/img/loupe.png' %}" class="bnt_loupe_search"> 
+
         </form>
     </section>
+    <h1 class="title_1">Toute les annonces</h1>
     <section id="list_ads">
-        <h1 class="title_1">Liste de toute les annonce</h1>
+
         {% if post_ad %}
             {% for item in post_ad %}
                 <div id="block_detailed_ad">
                     <div class="div_image_ad">
-                        <img src="{{item.photo_ad.url}}" style="width: 100px; height: 100px;" alt="Image">
+                        <img src="{{item.photo_ad.url}}" alt="Image">
                     </div>
-                    <div>
-                        <a href="{% url 'poster_detailed' item.id %}">{{ item }}</a>
+                    <div class="detaile_ad">
+                        <div>
+                            <a href="{% url 'poster_detailed' item.id %}" id="lien_ad">{{ item }}</a>
+                            <p class="infos_price"> {{ item.price_ad }} FCFA</p>
+                        </div>
                         <p class="infos_geolocalisation">{{ item.district }} {{ item.city }}</p>
                         <p class="infos_time">{{ item.date_create_ad }}</p>
-                        <p class="infos_price"> {{ item.price_ad }} </p>
                     </div>
                 </div>
             {% endfor %}
