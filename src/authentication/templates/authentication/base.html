@@ -20,7 +20,21 @@
                         <div class="rigth">
                             {% if user.is_authenticated %}
 
-                            <p>Vous être connecté en tan que {{ request.user }}. <a href="{% url 'logout' %}">Cliquer ici pour vous deconnecter</a></p>
+                            <div class="container_logo_user">
+                                <div class="div_hide_user">
+                                    <ul class="list_menu">
+                                        <li>Voir mes annonces</li>
+                                        <li>Mon compte</li>
+                                        <li>Deconnection</li>
+                                    </ul>
+                                </div>
+                                <div class="container_logo">
+                                    <img src="{% static 'authentication/img/utilisateur.png' %}" alt="Logo user" class="logo_user">
+                                </div>
+                                <div>
+                                    <Button class="bnt_ad_new">Poster une annonce</Button>
+                                </div>
+                            </div>
                             {% else %}
                             <a href="{% url 'login' %}" class="singup">S'incrire</a> -
                             <a href="{% url 'singup' %}" class="login">Se connecter</a>

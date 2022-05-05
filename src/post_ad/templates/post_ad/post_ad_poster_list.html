@@ -39,11 +39,12 @@
                         <p class="infos_time">{{ item.date_create_ad }}</p>
                     </div>
                 </div>
-            {% endfor %}
-        {% else %}
-            <p class="not_ads">Aucune annonce disponible</p>
-        {% endif%}
+                {% endfor %}
+                {% else %}
+                <p class="not_ads">Aucune annonce disponible</p>
+                {% endif%}
     </section>
     
-
+<script src="{% static 'authentication/js/authentication_user.js' %}"></script>
 {% endblock %}
+

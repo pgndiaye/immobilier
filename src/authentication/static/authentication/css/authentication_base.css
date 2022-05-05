@@ -45,8 +45,8 @@ header {
 .rigth {
     display: inline;
     position: absolute;
-    right: 0px;
-
+    right: 7px;
+    width: 455px;
 }
 a{
     text-decoration: none;
@@ -85,6 +85,63 @@ header a:visited {
     background-color: #2eca6a;
     color: white;
     font-weight: bold;
+}
+
+.container_logo_user {
+    display: flex;
+    width: 100%;
+    height: 76px;
+    position: relative;
+}
+
+
+.container_logo {
+    position: absolute;
+    right: 212px;
+    top: 10px;
+}
+
+.list_menu {
+    position: absolute;
+    left: -33px;
+    top: -9px;
+    list-style: none;
+    align-content: left;
+    font-size: 19px;
+    color: #000000;
+}
+
+.list_menu li {
+    transition-property: color;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.list_menu li:hover {
+    color: #2eca6a;
+}
+
+.div_hide_user {
+    width: 55%;
+    background-color: white;
+    font-size: 16px;
+    visibility: hidden;
+}
+
+.bnt_ad_new {
+    height: 42px;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: #2eca6a;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 24px;
+    right: 0;
 }
 
 #footer {
