@@ -1,26 +1,8 @@
 {% extends "authentication/base.html" %}
 {% load static %}
 {% block title_documents %} Liste de toute les annonce {% endblock %}
-{% block style %} 
-    <link rel="stylesheet" href="{% static 'post_ad/css/post_ad_poster_list.css' %}">
-{% endblock %}
-
 {% block content%}
 
-    {% if messages %}
-        {% for message in messages %}
-            <h1>{{ message }}</h1>
-        {% endfor %}
-    {% endif %}
-
-    <section id="block_search">
-        <form action="{% url 'poster_search' %}" method="post">
-            {% csrf_token %}
-            {{ form_search }}
-            <input type="image" src="{% static 'post_ad/img/loupe.png' %}" class="bnt_loupe_search"> 
-
-        </form>
-    </section>
     <h1 class="title_1">Toute les annonces</h1>
     <section id="list_ads">
 

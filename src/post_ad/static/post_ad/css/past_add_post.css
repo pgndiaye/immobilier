@@ -1,0 +1,46 @@
+label {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    width: 550px;
+}
+
+#id_city, #id_district, #id_house, #id_estate_type, #id_title_ad, #id_price_ad, #id_photo_ad, #id_number_of_piece, #id_number_phone {
+    
+}
+
+label[for="id_city"], label[for="id_district"], label[for="id_house"], label[for="id_estate_type"], label[for="id_title_ad"], label[for="id_price_ad"], label[for="id_photo_ad"], label[for="id_number_of_piece"], label[for="id_number_phone"], [for="id_description_ad"] {
+    display: none;
+}
+
+#id_city, #id_district, #id_house, #id_estate_type, #id_title_ad, #id_price_ad, #id_number_of_piece, #id_number_phone, #id_description_ad{
+    width: 180px;
+    border: 1px solid;
+    border-radius: 0;
+    font-size: 16px;
+    height: 30px;
+}
+
+.bnt_add_post {
+    height: 42px;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: #2eca6a;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: 150px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    color: red;
+}
