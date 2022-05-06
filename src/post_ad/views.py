@@ -29,6 +29,7 @@ class PostAdFormPage(LoginRequiredMixin, View):
             "user_id_ad": request.user.id,
             "estate_type": request.POST.get("estate_type"),
             "district": request.POST.get("district"),
+            "number_of_piece": request.POST.get("number_of_piece"),
         }
         form = self.class_form(data, request.FILES)        
 
@@ -37,7 +38,7 @@ class PostAdFormPage(LoginRequiredMixin, View):
             photo.uploader = request.user
             photo.save()
             messages.add_message(request, messages.SUCCESS, "Félication vous venez de publier une annonce")
-            return redirect("poster_list")
+            return redirect("index")
         
         messages.add_message(request, messages.INFO, "Veuillez vérifier les informations que vous avez entrer")
         return render(request, self.template_name, context={"form": form})
@@ -63,7 +64,7 @@ class PostAdUpdate(LoginRequiredMixin, View):
             form.uploder = request.user
             form.save()
             messages.add_message(request, messages.SUCCESS, "Vous venez de modifier vôtre annonce")
-            return redirect("poster_list") 
+            return redirect("index") 
         
         messages.add_message(request, messages.INFO, "Une Erreur c'est produite lors de la modification de l'annonce")
         return render(request, self.template_name, context={"form": form})
@@ -83,7 +84,7 @@ class PostAdDelete(LoginRequiredMixin, View):
         post_ad = self.class_model.objects.get(id=number_ad)
         post_ad.delete()
         messages.add_message(request, messages.INFO, "L'annonce a été supprimer")
-        return redirect("poster_list")
+        return redirect("index")
 
 class PostSearchProperty(View):
     template_name = "post_ad/post_ad_post_search.html"
@@ -121,14 +122,13 @@ class PostSearchProperty(View):
                 )
             except ValueError:
                 return render(request, self.template_name, context={"search_main": search_main})
-  
-                
             return render(request, self.template_name, context={"search_main": search_main})
 
 def post_ad_post_list(request):
     post_ad = PostAd.objects.all()
+    reversed_post_ad = post_ad[::-1]
     form_search = FormSearchProperty
-    return render(request, "post_ad/post_ad_poster_list.html", context={"post_ad": post_ad, "form_search": form_search})
+    return render(request, "post_ad/post_ad_poster_list.html", context={"post_ad": reversed_post_ad, "form_search": form_search})
 
 
 def post_ad_post_detailed(request, number_ad):
@@ -140,4 +140,5 @@ def post_ad_post_detailed(request, number_ad):
 def post_ad_post_ad_user(request):
     user_id = request.user.id
     post_ads = PostAd.objects.filter(user=request.user)
-    return render(request, "post_ad/post_ad_display_ad_user.html", context={"post_ads": post_ads})
+    reversed_post_ads = post_ads[::-1]
+    return render(request, "post_ad/post_ad_display_ad_user.html", context={"post_ads": reversed_post_ads})

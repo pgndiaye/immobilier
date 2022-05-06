@@ -26,10 +26,8 @@ class LoginPage(View):
         
             if user != None:
                 login(request, user)
-                messages.add_message(request, messages.SUCCESS, "Vous être connecté")
-                return redirect("poster_list")   
+                return redirect("index")   
         
-        messages.add_message(request, messages.SUCCESS, "Veuillez vérifier les informations que vous avez entrer")
         return render(request, self.template_name, context={"form":form})
     
 class SingupPage(View):
@@ -46,10 +44,7 @@ class SingupPage(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.add_message(request, messages.SUCCESS, "Vous être connecté")
-            return redirect("poster_list")
-        
-        messages.add_message(request, messages.INFO, "Veuillez vérifier les informations que vous avez entrer")
+            return redirect("index")        
         return render(request, self.template_name, context={"form": form})
 
 class EditInfo(LoginRequiredMixin, View):
@@ -71,10 +66,7 @@ class EditInfo(LoginRequiredMixin, View):
             photo = form.save(commit=False)
             photo.uploader = request.user
             photo.save()
-            messages.add_message(request, messages.SUCCESS, "Vos informations on été mise ajour avec succès")
             return redirect("update_profile")
-        
-        messages.add_message(request, messages.INFO, "Une erreur c'est produite lors de la modifications de vos information")
         return render(request, self.template_name, context={"form": form})
 
 class DeleteAccount(LoginRequiredMixin, View):
@@ -90,15 +82,13 @@ class DeleteAccount(LoginRequiredMixin, View):
     def post(self, request):
         user_delete = self.model_class.objects.get(username=request.user)
         user_delete.delete()
-        messages.add_message(request, messages.SUCCESS, "Vôtre compte a été supprimer avec succès")
-        return redirect("poster_list")
+        return redirect("index")
         
 
 @login_required
 def authentication_logout(request):  
     logout(request)
-    messages.add_message(request, messages.SUCCESS, "Vous venez de vous déconnecter")
-    return redirect("poster_list")
+    return redirect("index")
         
 
         
