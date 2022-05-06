@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                                 <div class="container_logo">
-                                    {% if user.photo_profile.url %}
+                                    {% if user.photo_profile %}
                                     <img src="{{ user.photo_profile.url }}" alt="Logo user" class="logo_user">
                                     {% else %}
                                         <img src="{% static 'authentication/img/utilisateur.png' %}" alt="Logo user" class="logo_user">

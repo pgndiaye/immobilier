@@ -1,0 +1,67 @@
+.helptext, form ul {
+    display: none;
+}
+
+form {
+    width: 480px;
+}
+
+#id_username:focus, #id_email:focus, #id_first_name:focus, #id_last_name:focus, #id_password1:focus, #id_password2:focus {
+    border-color: #2eca6a;
+    outline: 0;
+}
+
+#id_username, #id_email, #id_first_name, #id_last_name, #id_password1, #id_password2 {
+    float: right;
+    transition-property: all;
+    transition-duration: 1s;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    border: 1px solid;
+} 
+
+.title_1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+
+label {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container_form {
+    position: relative;
+    width: 483px;
+    height: 400px;
+}
+
+.bnt_singout, .bnt_login {
+    height: 42px;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: #2eca6a;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: 150px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.bnt_singout {
+    position: absolute;
+    right: 0;
+}
+
+.bnt_login {
+    position: absolute;
+    right: 0;
+    bottom: 70px;
+}
+
