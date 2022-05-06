@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'authentication/css/authentication_singup.css' %}">
 {% endblock %}
     <h1 class="title_1">Inscription</h1>
-    <div class="container_form">
+    <div class="container_form">    
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
