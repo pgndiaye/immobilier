@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
-
-
 body {
     position: relative;
 }
@@ -26,7 +23,7 @@ header {
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     position: absolute;
-    top: 9px;
+    top: 32px;
 }
 
 .logo_1 {
@@ -46,8 +43,14 @@ header {
     display: inline;
     position: absolute;
     right: 7px;
-    width: 455px;
+    width: 471px;
 }
+
+.logo_user {
+    
+width: 100%;height: 100%;border-radius: 50%;object-fit: initial;}
+
+
 a{
     text-decoration: none;
 
@@ -60,7 +63,7 @@ header a:visited {
     transition-property: color;
     transition-duration: 0.5s;
     font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;font-family: Arial, Helvetica, sans-serif;
 }
 
 .login {
@@ -94,31 +97,37 @@ header a:visited {
     position: relative;
 }
 
+.links_menu {
+    color: white;
+}
+
+.logout {
+    color: #f03434;
+}
 
 .container_logo {
     position: absolute;
     right: 212px;
-    top: 10px;
-}
+    top: 34px;
+width: 50px;height: 50px;}
 
 .list_menu {
     position: absolute;
-    left: -33px;
+    left: 42px;
     top: -9px;
     list-style: none;
     align-content: left;
     font-size: 19px;
-    color: #000000;
-}
+    color: white;
+    background-color: #2eca6a;
+    padding: 10px;
+border-radius: 5px;}
 
 .list_menu li {
     transition-property: color;
     transition-duration: 0.5s;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-}
-.list_menu li:hover {
-    color: #2eca6a;
 }
 
 .div_hide_user {
@@ -140,7 +149,7 @@ header a:visited {
     padding: 10px 16px;
     cursor: pointer;
     position: absolute;
-    top: 24px;
+    top: 38px;
     right: 0;
 }
 

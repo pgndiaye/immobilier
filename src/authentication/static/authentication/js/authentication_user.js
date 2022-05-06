@@ -14,3 +14,9 @@ logo_user.addEventListener("click", function(){
 });
 
 
+let element_hide_1 = document.evaluate('/html/body/main/div[1]/form/p[5]/text()[2]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.textContent = "";
+
+let element_hide_2 = document.evaluate('/html/body/main/div[1]/form/p[5]/text()[3]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.textContent = "";
+
+
+

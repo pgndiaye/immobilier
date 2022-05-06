@@ -1,14 +1,28 @@
 {% extends "authentication/base.html" %}
+{% load static %}
 {% block title_document %} List de toute vos annonces {% endblock %}
 {% block content %}
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'post_ad/css/post_ad_poster_list.css' %}">
+{% endblock %}
 
     <h1>Ceci est la liste de vos annonces</h1>
    
     <section>
         {% for item in post_ads %}
-            <article>
-                <a href="{% url 'poster_detailed' item.id %}">{{ item }}</a>
-            </article>
+            <div id="block_detailed_ad">
+                <div class="div_image_ad">
+                    <img src="{{item.photo_ad.url}}" alt="Image">
+                </div>
+                <div class="detaile_ad">
+                    <div>
+                        <a href="{% url 'poster_detailed' item.id %}" id="lien_ad">{{ item }}</a>
+                        <p class="infos_price"> {{ item.price_ad }} FCFA</p>
+                    </div>
+                    <p class="infos_geolocalisation">{{ item.district }} {{ item.city }}</p>
+                    <p class="infos_time">{{ item.date_create_ad }}</p>
+                </div>
+            </div>
         {% endfor %}
     </section>
 

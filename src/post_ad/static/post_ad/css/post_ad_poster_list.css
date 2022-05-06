@@ -5,7 +5,7 @@
     color: white;
     background-color: #2eca6a;
     position: relative;
-}
+margin-top: 24px;}
 
 #block_search form {
     top: 15px;
@@ -38,14 +38,14 @@
     border: 2px solid #2eca6a;
     margin-bottom: 25px;
     border-radius: 5px;
-    width: 50%;
-    height: 150px;
+    width: 56%;
+    height: 170px;
     color: #000000;
 }
 
 .detaile_ad {
     position: relative;
-    font-family: Arial, Helvetica, sans-serif;
+    right: 0px;font-family: Arial, Helvetica, sans-serif;
 }
 
 .detaile_ad div{
@@ -56,11 +56,11 @@
     width: 50%;
     height: 100%;
     min-width: 50%;
-}
+margin-right: 36px;}
 
 img {
     height: 100%;
-    object-fit: scale-down;
+    width: 100%;object-fit: initial;
 }
 
 #lien_ad {

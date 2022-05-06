@@ -23,21 +23,25 @@
                             <div class="container_logo_user">
                                 <div class="div_hide_user">
                                     <ul class="list_menu">
-                                        <li>Voir mes annonces</li>
-                                        <li>Mon compte</li>
-                                        <li>Deconnection</li>
+                                        <li><a href="{% url 'poster_list_user' %}"><span class="links_menu">Mes annonces</span></a></li>
+                                        <li><a href="{% url 'update_profile' %}"><span class="links_menu">Mon compte</span></a></li>
+                                        <li><a href="{% url 'logout' %}"><span class="links_menu logout">Deconnection</span></a></li>
                                     </ul>
                                 </div>
                                 <div class="container_logo">
-                                    <img src="{% static 'authentication/img/utilisateur.png' %}" alt="Logo user" class="logo_user">
+                                    {% if user.photo_profile.url %}
+                                    <img src="{{ user.photo_profile.url }}" alt="Logo user" class="logo_user">
+                                    {% else %}
+                                        <img src="{% static 'authentication/img/utilisateur.png' %}" alt="Logo user" class="logo_user">
+                                    {% endif %}
                                 </div>
                                 <div>
                                     <Button class="bnt_ad_new">Poster une annonce</Button>
                                 </div>
                             </div>
                             {% else %}
-                            <a href="{% url 'login' %}" class="singup">S'incrire</a> -
-                            <a href="{% url 'singup' %}" class="login">Se connecter</a>
+                            <a href="{% url 'singup' %}" class="singup">S'incrire</a> -
+                            <a href="{% url 'login' %}" class="login">Se connecter</a>
 
                             <a href=""><button class="bnt_new_ad">Poster une annonce</button></a>
                             {% endif %}
@@ -57,5 +61,6 @@
     <footer id="footer">
         <p class="Copyright">Copyright 2022 © Popo immobilier</p>
     </footer>
+    <script src="{% static 'authentication/js/authentication_user.js' %}"></script>
 </body> 
 </html>
