@@ -30,6 +30,7 @@ class PostAdFormPage(LoginRequiredMixin, View):
             "estate_type": request.POST.get("estate_type"),
             "district": request.POST.get("district"),
             "number_of_piece": request.POST.get("number_of_piece"),
+            "number_phone": request.POST.get("number_phone"),
         }
         form = self.class_form(data, request.FILES)        
 
@@ -103,6 +104,7 @@ class PostSearchProperty(View):
                 "property_type": request.POST.get("property_type"),
                 "estate_type": request.POST.get("estate_type"),
                 "number_of_piece": request.POST.get("number_of_piece"),
+
             }            
 
             search_main = PostAd.objects.filter(
