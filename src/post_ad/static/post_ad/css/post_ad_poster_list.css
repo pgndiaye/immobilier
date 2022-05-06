@@ -87,3 +87,31 @@ img {
     margin-left: -17px;
     font-size: 17px;
 }
+
+.lien_modify {
+    height: 42px;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: #2eca6a;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: 300px;
+}
+
+.lien_delete {
+    height: 42px;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: rgb(250, 48, 75);
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: 150px;
+}

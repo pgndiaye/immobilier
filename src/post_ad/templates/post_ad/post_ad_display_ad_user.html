@@ -7,23 +7,27 @@
 {% endblock %}
 
     <h1>Ceci est la liste de vos annonces</h1>
-   
     <section>
         {% for item in post_ads %}
+        <div class="list_display">
             <div id="block_detailed_ad">
                 <div class="div_image_ad">
                     <img src="{{item.photo_ad.url}}" alt="Image">
                 </div>
                 <div class="detaile_ad">
-                    <div>
-                        <a href="{% url 'poster_detailed' item.id %}" id="lien_ad">{{ item }}</a>
-                        <p class="infos_price"> {{ item.price_ad }} FCFA</p>
+                        <div>
+                            <a href="{% url 'poster_detailed' item.id %}" id="lien_ad">{{ item }}</a>
+                            <p class="infos_price"> {{ item.price_ad }} FCFA</p>
+                        </div>
+                        <p class="infos_geolocalisation">{{ item.district }} {{ item.city }}</p>
+                        <p class="infos_time">{{ item.date_create_ad }}</p>
                     </div>
-                    <p class="infos_geolocalisation">{{ item.district }} {{ item.city }}</p>
-                    <p class="infos_time">{{ item.date_create_ad }}</p>
+                    <a href="{% url 'poster_update' item.id %}" ><Button class="lien_modify" style="margin-left: 80px; width: 200px;">Modifier l'annonce</Button></a>
+                    <a href="{% url 'poster_delete' item.id %}" style="display: block;"><Button class="lien_delete" style="margin-left: 5px; width: 200px;">Supprimer l'annonce</Button></a>
                 </div>
-            </div>
+        </div>
         {% endfor %}
     </section>
+    
 
 {% endblock %}

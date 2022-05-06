@@ -1,12 +1,16 @@
 {% extends "authentication/base.html" %}
+{% load static %}
 {% block title_document %} Suppresion de l'annonce {{ post_ad.title_ad }} {% endblock %}
 {% block content %}
+{% block style %} 
+<link rel="stylesheet" href="{% static 'post_ad/css/post_ad_poster_list.css' %}">
+{% endblock %}
 
     <h1>Ête vous sure de vouloir supprimer l'annonce {{ post_ad.title_ad }}? </h1>
     <form method="post">
         {% csrf_token %}
-        <input type="submit" value="Oui je suis sûre">
+        <input type="submit" value="Oui je suis sûre" class="lien_modify" style="margin-bottom: 20px; width: 200px;">
     </form>
-    <a href="{% url 'index' %}"><button>Revenir a la liste des annonces</button></a> 
+    <a href="{% url 'index' %}"><button class="lien_delete" style="width: 200px;">Page d'acceuil</button></a> 
 
 {% endblock %}
