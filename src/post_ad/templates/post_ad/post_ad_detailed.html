@@ -1,0 +1,25 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{% block title_document %} Détaile du produit {{ post_ad.title_ad }} {% endblock %}
+{% block content %}
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'post_ad/css/post_ad_detailed.css' %}">
+{% endblock %}
+
+    <div class="container_infos">
+        <div class="container_image">
+            <p><img src="{{ post_ad.photo_ad.url }}"></p>
+        </div>
+        <div class="container_detailes">
+            <h1>{{post_ad.title_ad}}</h1>
+            <p>{{post_ad.description_ad}}</p>
+
+            <p> <strong>Type de bien:</strong> {{ post_ad.estate_type}}</p>
+            <p><strong>Prix:</strong> {{post_ad.price_ad}} FCFA</p>
+            <p><strong>Nombre(s) de piéce(s): </strong> {{ post_ad.number_of_piece }}</p>
+            <p><strong>Numéro de téléphone: </strong> {{post_ad.number_phone}}</p>
+            <p><strong>Publié pas: </strong> {{user}}</p>
+        </div>
+    </div>
+     
+{% endblock %}

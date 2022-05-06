@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de d'incription</title>
-</head>
-<body>
-    <h2>Inscription</h2>
-    {% if form.errors %}
-        {{ form.errors }}
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="S'inscrire">
-    </form>
-    <p><a href="{% url 'login' %}">aller a la page de connection</a></p>
-</body> 
-</html>
+{% extends "authentication/base.html" %}
+{% load static %}
+{% block content %}
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'authentication/css/authentication_singup.css' %}">
+{% endblock %}
+    <h1 class="title_1">Inscription</h1>
+    <div class="container_form">    
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="S'inscrire" class="bnt_singout">
+        </form>
+        <a href="{% url 'login' %}"><button class="bnt_login">Se connecter</button></a>
+    </div>
+
+    {% endblock %}

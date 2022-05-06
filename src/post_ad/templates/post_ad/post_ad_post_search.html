@@ -1,0 +1,21 @@
+{% extends "authentication/base.html" %}
+{% block title_documents %} Recherche d'annonce {% endblock %}
+{% block content%}
+
+{% if search_main %}
+
+    <h1>Voici les annonces qui corresponde a vôtre recherche</h1>
+
+    {% for item in search_main %}
+        <div>{{ item }}</div>
+    {% endfor %}
+
+{% else %}
+
+    <h1>Aucune annonce corresponde avec vôtre Recherche</h1>
+
+    <a href="{% url 'index' %}"><button>Revenir a la page d'acceuil</button></a>
+
+    
+{% endif %}
+{% endblock %}

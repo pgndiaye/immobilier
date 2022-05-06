@@ -1,17 +1,37 @@
 {% extends "authentication/base.html" %}
+{% load static %}
 {% block content %}
 
-<h1>Modifier vos information</h1>
-<form method="post" enctype="multipart/form-data">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <input type="submit" value="Metre a mes information">
-</form>
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'authentication/css/authentication_update.css' %}">
+{% endblock %}
 
-<h1>Edit la photo de profile</h1>
 
-<div>
-    <img src="{{ user.profile_photo.url }}" alt="" style="width: 100px; height: 100px;">
-</div>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    
+    {% for error in form.non_field_errors %}
+        <p>{{error}}</p>
+    {% endfor %}
+    
+    <h1>Modifier vos information</h1>
+    <div class="container_form">
+        <form method="post" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <div class="container_photo_user">
+                {% if user.photo_profile %}
+                <img src="{{ user.photo_profile.url }}" alt="Photo_user">
+                {% else %}
+                <img src="{% static 'authentication/img/anonymous.jpg' %}">
+                {% endif %}
+            </div>
+            <input type="submit" value="Metre a mes information" class="bnt_modify">
+        </form>
+    </div>
+    <a href="{% url 'delete_user' %}"><button class="bnt_delete_account">Supprimer le compte</button></a> 
 
 {% endblock %}

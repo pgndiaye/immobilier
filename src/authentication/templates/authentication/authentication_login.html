@@ -1,12 +1,27 @@
 {% extends "authentication/base.html" %}
+{% load static %}
 {% block content %}
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'authentication/css/authentication_login.css' %}">
+{% endblock %}
 
+{% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    
+    {% for error in form.non_field_errors %}
+        <p>{{error}}</p>
+    {% endfor %}
 <h1>Ceci est la page de connection</h1>
-<form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <input type="submit" value="Se connecter">
-    <p><a href="{% url 'singup' %}">aller a la page d'inscription</a></p>
-</form>
+<div class="container_form">
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Se connecter" class="bnt_connect">
+    </form>
+    <a href="{% url 'singup' %}"><button class="bnt_page_logout">S'inscrire</button></a>
+</div>
 
 {% endblock %}

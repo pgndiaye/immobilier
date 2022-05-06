@@ -10,14 +10,23 @@ class LoginForm(forms.Form):
 class SingupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ("username", "email", "first_name", "last_name")
-        
-        
+        fields = [
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+        ]
         
 class EditInfoForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ("username", "first_name", "last_name", "email", "profile_photo",)
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "photo_profile",
+        ]
         labels = {
             "username": "Nom d'utilisateur",
             "email": "Addresse email", 

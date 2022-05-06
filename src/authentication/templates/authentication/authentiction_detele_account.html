@@ -1,0 +1,12 @@
+{% extends "authentication/base.html" %}
+{% block title_document %} Confimation de la suppression du compte {% endblock %}
+{% block content %} 
+
+    <h1>Est que vous être sure de vouloir supprimer le compte ?</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Oui je suis sure">
+    </form>
+    <button> Non j'ai changé d'avis</button>
+{% endblock %}

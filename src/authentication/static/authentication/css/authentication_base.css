@@ -1,0 +1,171 @@
+body {
+    position: relative;
+}
+main {
+    margin: 0px 50px 0px 50px;
+}
+
+header {
+    margin: 0px 50px 0px 50px;
+    height: 80px;
+    position: relative;
+    color: #000000;
+    width: 90%;
+    min-width: 80%;
+}
+
+#nav_left {
+    font-size: clamp(16px, 24px, 36px);
+}
+
+.logo {
+    font-size: 2rem;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 32px;
+}
+
+.logo_1 {
+    transition-property: color;
+    transition-duration: 0.5s;
+}
+
+.logo_1:hover {
+    color: #2eca6a;
+}
+
+.logo_2 {
+    color: #2eca6a;
+}
+
+.rigth {
+    display: inline;
+    position: absolute;
+    right: 7px;
+    width: 471px;
+}
+
+.logo_user {
+    
+width: 100%;height: 100%;border-radius: 50%;object-fit: initial;}
+
+
+a{
+    text-decoration: none;
+
+}
+header a:visited {
+    color: #000000;
+}
+
+.singup, .login {
+    transition-property: color;
+    transition-duration: 0.5s;
+    font-size: 20px;
+    font-weight: 700;font-family: Arial, Helvetica, sans-serif;
+}
+
+.login {
+    margin-right: 20px;
+}
+
+.singup:hover {
+    color: #2eca6a;
+}
+
+.login:hover {
+    color: #2eca6a;
+}
+
+
+.bnt_new_ad {
+    height: 50px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 18px;
+    background-color: #2eca6a;
+    color: white;
+    font-weight: bold;
+}
+
+.container_logo_user {
+    display: flex;
+    width: 100%;
+    height: 76px;
+    position: relative;
+}
+
+.links_menu {
+    color: white;
+}
+
+.logout {
+    color: #f03434;
+}
+
+.container_logo {
+    position: absolute;
+    right: 212px;
+    top: 34px;
+width: 50px;height: 50px;}
+
+.list_menu {
+    position: absolute;
+    left: 42px;
+    top: -9px;
+    list-style: none;
+    align-content: left;
+    font-size: 19px;
+    color: white;
+    background-color: #2eca6a;
+    padding: 10px;
+border-radius: 5px;}
+
+.list_menu li {
+    transition-property: color;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.div_hide_user {
+    width: 55%;
+    background-color: white;
+    font-size: 16px;
+    visibility: hidden;
+}
+
+.bnt_ad_new {
+    height: 42px;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: #2eca6a;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 38px;
+    right: 0;
+}
+
+#footer {
+    width: 90%;
+    height: 100px;
+    color: white;
+    background-color: #2eca6a;
+    text-align: center;
+    margin: 0px 50px 0px 50px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.Copyright {
+    padding-top: 23px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}

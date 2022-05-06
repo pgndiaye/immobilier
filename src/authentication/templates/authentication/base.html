@@ -1,16 +1,69 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title_document %} Toute les annonces {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'authentication/css/authentication_base.css' %}">
+    <link rel="stylesheet" href="{% static 'post_ad/css/post_ad_poster_list.css' %}">
+
+    {% block style %} {% endblock %}
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <header>
+        <nav id="nav_main">
+            <section id="block_nav">
+                <div class="nav_bar">
+                    <div id="nav_left">
+                        <a href="{% url 'index' %}" class="logo"> <span class="logo_1">Popo</span>  <span class="logo_2">immobilier</span> </a>
+                        <div class="rigth">
+                            {% if user.is_authenticated %}
 
-    {% if user.is_authenticated %}
-        <p>Vous être connecté en tan que {{ request.user }}. <a href="{% url 'logout' %}">Cliquer ici pour vous deconnecter</a></p>
-    {% endif %}
+                            <div class="container_logo_user">
+                                <div class="div_hide_user">
+                                    <ul class="list_menu">
+                                        <li><a href="{% url 'poster_list_user' %}"><span class="links_menu">Mes annonces</span></a></li>
+                                        <li><a href="{% url 'update_profile' %}"><span class="links_menu">Mon compte</span></a></li>
+                                        <li><a href="{% url 'logout' %}"><span class="links_menu logout">Deconnection</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="container_logo">
+                                    {% if user.photo_profile %}
+                                    <img src="{{ user.photo_profile.url }}" alt="Logo user" class="logo_user">
+                                    {% else %}
+                                        <img src="{% static 'authentication/img/utilisateur.png' %}" alt="Logo user" class="logo_user">
+                                        <img src="{% static 'authentication/img/utilisateur.png' %}" alt="Logo user" class="logo_user">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <a href="{% url 'poster_add' %}"> <Button class="bnt_ad_new">Poster une annonce</Button></a>
+                                </div>
+                            </div>
+                            {% else %}
+                            <a href="{% url 'singup' %}" class="singup">S'incrire</a> -
+                            <a href="{% url 'login' %}" class="login">Se connecter</a>
+
+                            <a href=""><button class="bnt_new_ad">Poster une annonce</button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+        
+                </div>
+            </section>
+        </nav>
+    </header>
+
+    <main id="block_main">
+
+        {% block content %}{% endblock %}
+
+    </main>
+    <footer id="footer">
+        <p class="Copyright">Copyright 2022 © Popo immobilier</p>
+    </footer>
+    <script src="{% static 'authentication/js/authentication_user.js' %}"></script>
 </body> 
 </html>

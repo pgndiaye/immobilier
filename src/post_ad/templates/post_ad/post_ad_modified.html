@@ -1,0 +1,29 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{% block title_document %} Modification de {{ post_ad.title_ad }} {% endblock %}
+{% block content %}
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'post_ad/css/past_add_post.css' %}">
+    <link rel="stylesheet" href="{% static 'post_ad/css/post_ad_poster_list.css' %}">
+
+{% endblock %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    
+    {% for error in form.non_field_errors %}
+        {{error}}
+    {% endfor %}
+
+    <h1>Modifier l'annonce</h1>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Modifier l'annonce" class="lien_modify" style="width: 200px; margin-bottom: 10px;">
+    </form>
+    <a href="{% url 'poster_delete' number_ad %} "><button class="lien_delete" style="width: 200px;">supprimer l'annonce</button></a>
+
+{% endblock %}

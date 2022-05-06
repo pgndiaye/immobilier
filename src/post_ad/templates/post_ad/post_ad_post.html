@@ -1,0 +1,21 @@
+{% extends "authentication/base.html" %}
+{% load static %}
+{% block title_document %} Poster une nouvelle annonce {% endblock %}
+
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'post_ad/css/past_add_post.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% for error in form.non_field_errors %}
+        <p>{{error}}</p>
+    {% endfor %}
+
+    <h1>Publié une annonce</h1>
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Publié l'annonce" class="bnt_add_post">
+        </form>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+.bnt_connect, .bnt_page_logout {
+    height: 42px;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: #2eca6a;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: 150px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.bnt_connect {
+    position: relative;
+    right: -222px;
+}
+
+.bnt_page_logout {
+    position: relative;
+    left: 221px;
+    margin-bottom: 100px;
+}
+
+
+label {
+    font-size: 18px;
+}
+
+#id_username, #id_password {
+    float: right;
+    transition-property: all;
+    transition-duration: 1s;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    border: 1px solid;
+}
+
+#id_username:focus, #id_password:focus {
+    border-color: #2eca6a;
+    outline: 0;
+}
+
+form {
+    width: 372px;
+}
+
+.container_form {
+    position: relative;
+    height: 359px;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+
+}
