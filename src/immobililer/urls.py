@@ -19,10 +19,11 @@ from authentication import views
 from django.conf import settings
 from django.conf.urls.static import static
 from immobililer.views import immobilier_home
+from post_ad.views import post_ad_post_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', immobilier_home, name='home'),
+    path('', post_ad_post_list, name='home'),
     
     path('login/', views.LoginPage.as_view(), name="login"),
     path('singup/', views.SingupPage.as_view(), name="singup"),
