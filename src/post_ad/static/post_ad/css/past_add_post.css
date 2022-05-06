@@ -7,10 +7,6 @@ form {
     width: 550px;
 }
 
-#id_city, #id_district, #id_house, #id_estate_type, #id_title_ad, #id_price_ad, #id_photo_ad, #id_number_of_piece, #id_number_phone {
-    
-}
-
 label[for="id_city"], label[for="id_district"], label[for="id_house"], label[for="id_estate_type"], label[for="id_title_ad"], label[for="id_price_ad"], label[for="id_photo_ad"], label[for="id_number_of_piece"], label[for="id_number_phone"], [for="id_description_ad"] {
     display: none;
 }
